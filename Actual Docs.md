@@ -314,9 +314,9 @@ Anyhow, here are the six types of strings in Keg+
 
 |         Type        |   Form  |
 |:-------------------:|:-------:|
-| Spaceless, Standard |  \`...\`|
-|  Spaceful, Standard | `¶...¶` |
-| Spaceless, SCC Only | `“...”` |
-|  Spaceful, SCC Only | `‘...’` |
-|  Spaceless, Special | `„...„` |
-|  Spaceful, Special  | `«...«` |
+| Spaceless, Standard | \`...\` |
+|  Spaceful, Standard |  ¶...¶  |
+| Spaceless, SCC Only |  “...”  |
+|  Spaceful, SCC Only |  ‘...’  |
+|  Spaceless, Special |  „...„  |
+|  Spaceful, Special  |  «...«  |
