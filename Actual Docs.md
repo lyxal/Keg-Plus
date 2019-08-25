@@ -256,15 +256,17 @@ Unlike most traditional languages, Keg+ will automatically cast data types to ot
 |     \<lhs\> / \<rhs\>     | Integer | Character | String (integer-like) | String |  Stack  |
 |:---------------------:|:-------:|:---------:|:---------------------:|:------:|:-------:|
 |        Integer        | Integer |  Integer* |        Integer        |  Error | Stack** |
-|       Character       |  Error  |   Error   |         Error         |  Error |  Error  |
-| String (integer-like) |  Error  |   Error   |         Error         |  Error |  Error  |
-|         String        |  Error  |   Error   |         Error         |  Error |  Error  |
+|       Character       |Integer****|Integer****|      Integer****    |  Error |  Error  |
+| String (integer-like) | Stack***| Stack***  |        Integer        |  Error |  Error  |
+|         String        | Stack***| Stack***  |         Error         |  Error |  Error  |
 |         Stack         | Stack** |   Error   |         Error         |  Error |  Error  |
 
   
 
 *The result would be the integer divided the ascii code of the character
-**Goes through and devides each item in the stack by the integer
+**Goes through and divides each item in the stack by the integer
+***This splits a string by the specified character. If the operand is an integer, convert it to a character.
+****Converts both sides to integers.
 _NB: Modulus would be the same as this table_
 
 ### Creation of data types
