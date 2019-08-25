@@ -223,10 +223,10 @@ Unlike most traditional languages, Keg+ will automatically cast data types to ot
 
 |   \<lhs\> - \<rhs\>   |  Integer |  Character | String (int-like) |   String  |   Stack   |
 |:-----------------:|:--------:|:----------:|:-----------------:|:---------:|:---------:|
-|      Integer      |  Integer |  Integer*  |      Integer      |   Error   | Integer** |
-|     Character     |   Error  | Character? |       Error       |   Error   |  Stack*** |
-| String (int-like) |   Error  |    Error   |     Stack****     | Stack**** |  Stack*** |
-|       String      |   Error  |    Error   |     Stack****     | Stack**** |  Stack*** |
+|      Integer      |  Integer |  Integer*  |      Integer      |String**** | Integer** |
+|     Character     |   Error  | Character? |     String****    |String**** |  Stack*** |
+| String (int-like) |String****| String**** |     Stack****     | Stack**** |  Stack*** |
+|       String      |String****| String**** |     Stack****     | Stack**** |  Stack*** |
 |       Stack       | Stack*** |  Stack***  |      Stack***     |  Stack*** |  Stack*** |
 
   
@@ -234,6 +234,7 @@ Unlike most traditional languages, Keg+ will automatically cast data types to ot
 *The result would be the integer minus the ascii code of the character
 **If the items in the stack are all integers, chars and int-like strings, then the stack is all added together and then subtracted from the original integer. Otherwise, the result is a stack
 ***Removes all occurances of the item in the stack
+****Subtraction when both operands are converted into base-255
 ****A stack with the chars that are unique to both strings
 
 #### Multiplication (*)
@@ -241,16 +242,16 @@ Unlike most traditional languages, Keg+ will automatically cast data types to ot
 |   \<lhs\> * \<rhs\>   |        Integer       | Character | String (int-like) |        String        |        Stack        |
 |:-----------------:|:--------------------:|:---------:|:-----------------:|:--------------------:|:-------------------:|
 |      Integer      |        Integer       |  Integer* |      Integer      | String (python-like) | Stack (python-like) |
-|     Character     |         Error        |  String** |       Error       |         Error        |        Error        |
-| String (int-like) | String (python-like) |   Error   |       Error       |         Error        |        Error        |
-|       String      | String (python-like) |   Error   |       Error       |         Error        |        Error        |
-|       Stack       |  Stack (python-like) |   Error   |       Error       |         Error        |        Error        |
+|     Character     |         Error        |  String** |     String***     |       String***      |        Error        |
+| String (int-like) | String (python-like) | String*** |     String***     |       String***      |        Error        |
+|       String      | String (python-like) | String*** |     String***     |       String***      |        Error        |
+|       Stack       |  Stack (python-like) |   Error   |       Error       |         Error        |       Stack***      |
 
   
 
 *The result would be the integer times the ascii code of the character
 **The result would be the lhs multipled by the ascii code of the rhs and turned into a string in a python like fashion
-
+***The result will be the Cartesian product of the two values.
 #### Division (/)
 |     \<lhs\> / \<rhs\>     | Integer | Character | String (integer-like) | String |  Stack  |
 |:---------------------:|:-------:|:---------:|:---------------------:|:------:|:-------:|
